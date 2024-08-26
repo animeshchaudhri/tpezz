@@ -1,0 +1,53 @@
+# .gitignore
+
+# General
+.DS_Store
+node_modules/
+dist/
+*.log
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Go
+bin/
+*.exe
+*.test
+*.out
+vendor/
+
+# Next.js
+.next/
+out/
+build/
+
+# OS Specific
+# macOS
+*.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+**/node_modules
+**/vendor
+
+# Test coverage and other generated files
+coverage/
+*.lcov
+
+# Logs and debugging files
+*.log
