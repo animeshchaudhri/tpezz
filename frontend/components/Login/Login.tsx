@@ -65,7 +65,7 @@ const Login = () => {
         </CardContent>
         <CardFooter>
           <p className="text-sm text-muted-foreground text-center w-full">
-            Don't have an account?{" "}
+            Dont have an account?{" "}
             <a href="#" className="text-primary hover:underline">
               Sign up
             </a>
