@@ -21,14 +21,7 @@ interface RouteProps {
   label: string;
 }
 
-const routeList: RouteProps[] = [
-  { href: "/trip", label: "TripPlanner" },
-  { href: "#Features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#Faqs", label: "FAQs" },
-];
-
-const Navbar = () => {
+const Navbar2 = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
   const router = useRouter();
@@ -67,22 +60,7 @@ const Navbar = () => {
                   <SheetTitle className="font-bold text-xl text-start">
                     Tpezz Travel Planner
                   </SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col justify-center items-start space-y-3 mt-6">
-                  <ul className="flex flex-col space-y-3">
-                    {routeList.map(({ href, label }: RouteProps) => (
-                      <li key={label}>
-                        <Link
-                          href={href}
-                          onClick={() => setIsOpen(false)}
-                          className={buttonVariants({
-                            variant: "ghost",
-                          })}
-                        >
-                          {label}
-                        </Link>
-                      </li>
-                    ))}
+                  <div className="mt-20">
                     {isUserLoggedIn ? (
                       <Button onClick={() => router.push("/sign-out")}>
                         logout
@@ -92,29 +70,14 @@ const Navbar = () => {
                         login
                       </Button>
                     )}
-                  </ul>
-                </div>
+                  </div>
+                </SheetHeader>
               </SheetContent>
             </Sheet>
           </div>
 
           {/* desktop */}
-          <div className="hidden md:flex gap-2">
-            <ul className="flex space-x-2">
-              {routeList.map((route: RouteProps, i) => (
-                <li key={i}>
-                  <Link
-                    href={route.href}
-                    className={`text-[17px] ${buttonVariants({
-                      variant: "ghost",
-                    })}`}
-                  >
-                    {route.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="hidden md:flex gap-2"></div>
 
           <div className="hidden md:flex gap-2">
             <div className="flex space-x-2">
@@ -132,4 +95,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;

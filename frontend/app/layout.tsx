@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={dmsans.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useState } from "react";
 import {
@@ -11,15 +12,19 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Plane } from "lucide-react";
 
-const SignupComponent = () => {
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signup } from "@/lib/services/Authservice";
+
+const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
+  const router = useRouter();
 
-  const handleSignup = (e: any) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Signup attempted with:", {
       name,
@@ -27,6 +32,19 @@ const SignupComponent = () => {
       password,
       agreeTerms,
     });
+    if (!agreeTerms) {
+      return;
+    }
+
+    try {
+      const success = await signup(name, email, password);
+      if (success) {
+        router.push("/"); // Redirect to dashboard on successful signup
+      } else {
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+    }
   };
 
   const handleCheckboxChange = (checked: boolean) => {
@@ -37,9 +55,7 @@ const SignupComponent = () => {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <div className="flex items-center justify-center mb-4">
-            <Plane className="h-10 w-10 text-primary" />
-          </div>
+          <div className="flex items-center justify-center mb-4"></div>
           <CardTitle className="text-2xl font-bold text-center">
             Create an Account
           </CardTitle>
@@ -102,9 +118,9 @@ const SignupComponent = () => {
         <CardFooter>
           <p className="text-sm text-muted-foreground text-center w-full">
             Already have an account?{" "}
-            <a href="#" className="text-primary hover:underline">
-              Log in
-            </a>
+            <Link href="/sign-in" className="text-primary hover:underline">
+              login
+            </Link>
           </p>
         </CardFooter>
       </Card>
@@ -112,4 +128,4 @@ const SignupComponent = () => {
   );
 };
 
-export default SignupComponent;
+export default Signup;

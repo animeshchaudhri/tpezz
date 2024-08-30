@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 import { Icons } from "@/components/Icons";
-import { Button, buttonVariants } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import { HeroCards } from "./HeroCards";
 import V1 from "./V1";
 
 const Hero = () => {
   return (
     <>
-      {/* <V1 /> */}
-      <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+      <V1 />
+      <section className="container grid lg:grid-cols-2 place-items-center py-12 md:pt-17 pb-32  gap-10">
         <div className="text-center lg:text-start space-y-6">
           <main className="text-5xl md:text-6xl font-bold">
             <h1 className="inline">
@@ -33,15 +33,20 @@ const Hero = () => {
           </p>
 
           <div className="space-y-4 md:space-y-0 md:space-x-4">
-            <Button className="w-full md:w-1/3">Plan Your Trip</Button>
+            <Link
+              className={`w-full md:w-1/3 ${buttonVariants()}`}
+              href={"/trip"}
+            >
+              Plan Your Trip
+            </Link>
 
             <Link
-              href="#how-it-works"
+              href="#Features"
               className={`w-full md:w-1/3 ${buttonVariants({
                 variant: "outline",
               })}`}
             >
-              How It Works
+              Features
               <Icons.question className="ml-2 h-4 w-4" />
             </Link>
           </div>

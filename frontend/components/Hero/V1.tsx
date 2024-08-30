@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 export default function V1() {
   return (
-    <div className="  flex items-center justify-center">
+    <div className="  flex items-center justify-center mt-6 ">
       <AnimatedGradientText>
         🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
         <span
