@@ -20,14 +20,9 @@ func main() {
 	defer app.CloseDBConnection()
 
 	timeout := time.Duration(env.ContextTimeout) * time.Second
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"}
-	config.AllowCredentials = true
-	config.AddAllowHeaders("Authorization")
-	gin := gin.Default()
-	
 
-	gin.Use(cors.New(config))
+	gin := gin.Default()
+	gin.Use(cors.Default())
 	route.Setup(env, timeout, db, gin)
 
 	gin.Run(env.ServerAddress)
