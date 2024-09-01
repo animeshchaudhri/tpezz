@@ -19,7 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { generate } from "@/lib/services/AiService";
 import { APIKEY } from "@/lib/services/HotelService";
-import Loading from "@/app/loading";
+
 import { Globe } from "lucide-react";
 
 interface ItineraryData {

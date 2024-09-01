@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { ModeToggle } from "../ModeToggle";
 import { useRouter } from "next/navigation";
 import { isLoggedIn } from "@/lib/services/Authservice";

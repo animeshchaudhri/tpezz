@@ -3,18 +3,13 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 import {
-  IconBoxAlignRightFilled,
   IconCalendarEvent,
-  IconClipboardCopy,
   IconCurrencyDollar,
-  IconFileBroken,
   IconMap,
   IconPlane,
-  IconSignature,
-  IconTableColumn,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import {
   Banana,
   Bot,

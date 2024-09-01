@@ -23,8 +23,7 @@ import {
   getDestination,
   searchHotels,
 } from "@/lib/services/HotelService";
-import { set } from "date-fns";
-import Loading from "@/app/loading";
+
 
 interface Location {
   dest_id: string;
@@ -65,7 +64,7 @@ export function HotelSearch() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchLocationData = async () => {
-      const destination = searchParams.get("destination") || "";
+      const destination = searchParams.get("destination") ?? "";
       try {
         const data = await getDestination(destination);
         console.log("Fetched location data:", data);
@@ -84,11 +83,11 @@ export function HotelSearch() {
   useEffect(() => {
     const fetchHotels = async () => {
       if (location) {
-        const checkin = searchParams.get("checkin") || "2024-09-01";
-        const checkout = searchParams.get("checkout") || "2024-09-05";
-        const adults = searchParams.get("adults") || "2";
-        const children = searchParams.get("children") || "1";
-        const childrenAges = searchParams.get("childrenAges") || "5";
+        const checkin = searchParams.get("checkin") ?? "2024-09-01";
+        const checkout = searchParams.get("checkout") ?? "2024-09-05";
+        const adults = searchParams.get("adults") ?? "2";
+        const children = searchParams.get("children") ?? "1";
+        const childrenAges = searchParams.get("childrenAges") ?? "5";
 
         try {
           const data = await searchHotels(
@@ -153,12 +152,12 @@ export function HotelSearch() {
   };
 
   const handlesubmit = async (hotel: Hotel) => {
-    const intertests = searchParams.get("interests") || "";
-    const checkin = searchParams.get("checkin") || "";
-    const checkout = searchParams.get("checkout") || "";
+    const intertests = searchParams.get("interests") ?? "";
+    const checkin = searchParams.get("checkin") ?? "";
+    const checkout = searchParams.get("checkout") ?? "";
     const lat = parseFloat(hotel.latitude);
     const lng = parseFloat(hotel.longitude);
-    const destination = searchParams.get("destination") || "";
+    const destination = searchParams.get("destination") ?? "";
     const hotelname = hotel.hotel_name;
 
     const queryParams = new URLSearchParams({
@@ -177,11 +176,10 @@ export function HotelSearch() {
     <div className="flex h-screen">
       <div className="w-1/2 overflow-y-auto p-4 space-y-4">
         <h2 className="text-2xl font-bold mb-4">
-          Hotels in {location?.name || "Loading..."}
+          Hotels in {location?.name ?? "Loading..."}
         </h2>
         {loading ? (
-          <>
-            <div>
+          <div>
               <div className="flex items-center justify-center min-h-screen bg-gray-900 flex-col">
                 <div className="relative">
                   <Globe className="w-16 h-16 text-gray-600 animate-pulse" />
@@ -197,7 +195,6 @@ export function HotelSearch() {
                 <p>hotels loading..</p>
               </div>
             </div>
-          </>
         ) : (
           hotels.map((hotel) => (
             <Card

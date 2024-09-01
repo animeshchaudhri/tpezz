@@ -18,11 +18,11 @@ import {
   FaCode,
   FaProjectDiagram,
 } from "react-icons/fa";
-import { LuSettings } from "react-icons/lu";
+import { LuSettings , LuRadar, LuBarChartHorizontalBig } from "react-icons/lu";
 import { RxDashboard } from "react-icons/rx";
 import { IoAccessibility, IoGameControllerOutline } from "react-icons/io5";
 import { FaXTwitter, FaLinkedin, FaPeopleGroup } from "react-icons/fa6";
-import { LuRadar, LuBarChartHorizontalBig } from "react-icons/lu";
+
 import { Rocket ,CircleHelp } from "lucide-react";
 
 export type IconKeys = keyof typeof icons;
