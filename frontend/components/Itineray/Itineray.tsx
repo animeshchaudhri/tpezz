@@ -22,6 +22,7 @@ import { APIKEY } from "@/lib/services/HotelService";
 
 import { Globe } from "lucide-react";
 import { getNearby } from "@/lib/services/Nearby";
+import Loading from "@/app/loading";
 
 interface ItineraryData {
   trip_details: {
@@ -172,7 +173,7 @@ export default function Itinerary() {
       (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 60 * 60 * 24)
     );
     const neabyPlaces = await getNearby(lat, lng);
-    console.log("Nearby places:", neabyPlaces);
+  
     const prompt = `Generate a detailed ${duration}-day itinerary for a trip to ${destination}, with accommodations at ${hotelname}. The itinerary should include specific driving routes for each day, with at least two activities to create waypoints. Use the following details to create a personalized and well-rounded travel plan:
 
 Check-in date: ${checkin}
@@ -268,6 +269,7 @@ here is format of json
     );
   }
  
+
   if (error) {
     return (
       <div className="p-4 dark:bg-gray-900 dark:text-white">
@@ -278,11 +280,14 @@ here is format of json
     );
   }
 
+  if (!itinerary) {
+    return <Loading />;
+  }
   
 
  return (
 
- (itinerary &&(
+ 
   <div className="flex flex-col lg:flex-row bg-gray-100 dark:bg-gray-900 min-h-screen">
     <div className="itinerary-content w-full lg:w-1/2 p-4 overflow-y-auto max-h-screen">
       <Card className="mb-6 overflow-hidden shadow-lg dark:bg-gray-800">
@@ -388,6 +393,6 @@ here is format of json
       </APIProvider>
     </div>
   </div>
- ))
+
 );
 }
