@@ -83,8 +83,8 @@ export function HotelSearch() {
   useEffect(() => {
     const fetchHotels = async () => {
       if (location) {
-        const checkin = searchParams.get("checkin") ?? "2024-09-01";
-        const checkout = searchParams.get("checkout") ?? "2024-09-05";
+        const checkin = searchParams.get("checkin") ?? "";
+        const checkout = searchParams.get("checkout") ?? "";
         const adults = searchParams.get("adults") ?? "2";
         const children = searchParams.get("children") ?? "1";
         const childrenAges = searchParams.get("childrenAges") ?? "5";

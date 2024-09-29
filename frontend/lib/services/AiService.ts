@@ -1,11 +1,11 @@
 import {
   GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
+ 
 } from "@google/generative-ai";
 
 export async function generate(data: string): Promise<string> {
   try {
+    
     const genAI = new GoogleGenerativeAI(
       process.env.NEXT_PUBLIC_API_GEMINI as string
     );
@@ -21,30 +21,12 @@ export async function generate(data: string): Promise<string> {
       responseMimeType: "text/plain",
     };
 
-    const safetySettings = [
-      {
-        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-      },
-    ];
+   
 
     const chatSession = model.startChat({
       generationConfig,
   
-      // safetySettings: Adjust safety settings
-      // See https://ai.google.dev/gemini-api/docs/safety-settings
+      
       history: [
         {
           role: "user",
@@ -69,7 +51,7 @@ export async function generate(data: string): Promise<string> {
 
     const response = result.response;
 
-    console.log("Response:", response);
+ 
     return response.text();
   } catch (error) {
     console.error("Error:", error);

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CalendarIcon, CreditCard, Globe, Users } from "lucide-react";
-import { format, addDays, isBefore, isAfter, isSameDay } from "date-fns";
+import { format, addDays, isBefore, isSameDay } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -223,7 +223,7 @@ const TravelBookingForm: React.FC = () => {
               <div className="relative">
                 <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                 <Select
-                  onValueChange={(value) => handleInputChange("guests", value)}
+                  onValueChange={(value:any) => handleInputChange("guests", value)}
                 >
                   <SelectTrigger className="bg-gray-700 border-gray-600 text-gray-100 pl-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <SelectValue placeholder="Select number of guests" />
@@ -242,7 +242,7 @@ const TravelBookingForm: React.FC = () => {
                 Interests
               </Label>
               <div className="grid grid-cols-2 gap-4">
-                {["beaches", "culture", "nightlife", "adventure"].map(
+                {["Culinary travel", "culture", "nightlife", "adventure"].map(
                   (interest) => (
                     <div key={interest} className="flex items-center space-x-2">
                       <Checkbox
@@ -272,7 +272,7 @@ const TravelBookingForm: React.FC = () => {
               <div className="relative">
                 <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                 <Select
-                  onValueChange={(value) => handleInputChange("budget", value)}
+                  onValueChange={(value:any) => handleInputChange("budget", value)}
                 >
                   <SelectTrigger className="bg-gray-700 border-gray-600 text-gray-100 pl-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <SelectValue placeholder="Select your budget" />
